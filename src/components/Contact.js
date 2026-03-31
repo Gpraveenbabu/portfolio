@@ -21,8 +21,11 @@ function Contact() {
   }, []);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-  const handleSubmit = (e) => { e.preventDefault(); setSent(true); };
-
+  const handleSubmit = (e) => {
+  e.preventDefault();
+  window.location.href = `mailto:p.geddada@stud.uni-goettingen.de?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(`Name: ${form.name}\n\n${form.message}`)}`;
+  setSent(true);
+};
   return (
     <section id="contact" className="contact">
       <div className="contact-layout reveal" ref={ref}>
@@ -70,11 +73,7 @@ function Contact() {
                   <label>Name</label>
                   <input name="name" type="text" placeholder="Your name" value={form.name} onChange={handleChange} required />
                 </div>
-                <div className="form-group">
-                  <label>Email</label>
-                  <input name="email" type="email" placeholder="your@email.com" value={form.email} onChange={handleChange} required />
                 </div>
-              </div>
               <div className="form-group">
                 <label>Subject</label>
                 <input name="subject" type="text" placeholder="What's this about?" value={form.subject} onChange={handleChange} />

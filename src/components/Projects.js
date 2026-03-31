@@ -2,13 +2,6 @@ import React, { useEffect, useRef } from 'react';
 
 const projects = [
   {
-    icon: '🤖',
-    title: 'Generative AI PDF Chatbot',
-    description: 'A Retrieval-Augmented Generation (RAG) system for querying PDF documents using natural language. Integrates LangChain and OpenAI API for context-aware responses with a full-stack React + Python architecture.',
-    tags: ['Python', 'LangChain', 'OpenAI API', 'React', 'RAG'],
-    github: 'https://github.com/Gpraveenbabu/Projects/blob/main/Generative_AI.ipynb',
-  },
-  {
     icon: '🖼️',
     title: 'CIFAKE — Fake Image Detection',
     description: 'A deep learning system to detect fake and manipulated images using CNN models. Implemented image preprocessing, model training, and evaluation pipelines with strong benchmark performance.',
@@ -22,6 +15,29 @@ const projects = [
     tags: ['Python', 'Scikit-learn', 'Pandas', 'ML'],
     github: 'https://github.com/Gpraveenbabu/Projects/blob/main/movierecomandationsystem.ipynb',
   },
+  {
+    icon: '🤖',
+    title: 'Generative AI PDF Chatbot',
+    description: 'A Retrieval-Augmented Generation (RAG) system for querying PDF documents using natural language. Integrates LangChain and OpenAI API for context-aware responses with a full-stack React + Python architecture.',
+    tags: ['Python', 'LangChain', 'OpenAI API', 'React', 'RAG'],
+    github: 'https://github.com/Gpraveenbabu/Projects/blob/main/Generative_AI.ipynb',
+  },
+  {
+    icon: '🔗',
+    title: 'URL Shortener',
+    description: 'A full-stack URL shortening service that converts long URLs into compact, shareable links. Features a clean React frontend, a FastAPI backend that generates unique short codes, click tracking, and redirect handling — all backed by a PostgreSQL database.',
+    tags: ['React', 'FastAPI', 'PostgreSQL', 'Python', 'REST API'],
+    github: 'https://github.com/Gpraveenbabu/Projects/blob/main/URL_Link_Shortening.py',
+  },
+  {
+    icon: '😷',
+    title: 'Face Mask Detection',
+    description: 'A real-time computer vision system that detects whether a person is wearing a face mask using a CNN-based deep learning model. Trained on a labeled dataset of masked and unmasked faces, with live webcam inference powered by OpenCV and TensorFlow.',
+    tags: ['Python', 'TensorFlow', 'OpenCV', 'CNN', 'Computer Vision'],
+    github: 'https://github.com/Gpraveenbabu/Projects/blob/main/Face_Mask_Detection.ipynb',
+  },
+
+
 ];
 
 const publication = {
