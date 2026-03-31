@@ -16,7 +16,7 @@ function Home() {
         </h1>
 
         <p className="hero-sub">
-        Master's student in Applied
+          AI Engineer · Full Stack Developer · Researcher. Master's student in Applied
           Computer Science at the University of Göttingen, passionate about building
           real-world AI solutions.
         </p>
