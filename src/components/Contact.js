@@ -30,7 +30,7 @@ function Contact() {
         <div className="contact-text">
           <p className="section-label-dark">Contact</p>
           <h2>Let's work together.</h2>
-          <p>Whether it's an internship, student assistant (HiWi), or research opportunities — feel free to reach out if there’s a good fit.</p>
+          <p>Whether it's an internship, student assistant (HiWi), or research opportunities — I'd love to hear from you!</p>
           <div className="contact-links">
             <a href="mailto:p.geddada@stud.uni-goettingen.de" className="contact-link">
               <span className="contact-link-icon">✉</span>
