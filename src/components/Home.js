@@ -12,11 +12,11 @@ function Home() {
         
 
         <h1 className="hero-title">
-          Praveen Babu
+          Praveen Babu Geddada
         </h1>
 
         <p className="hero-sub">
-          AI Engineer · Full Stack Developer · Researcher. Master's student in Applied
+        Master's student in Applied
           Computer Science at the University of Göttingen, passionate about building
           real-world AI solutions.
         </p>
