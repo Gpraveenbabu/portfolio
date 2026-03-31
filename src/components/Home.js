@@ -5,7 +5,10 @@ function Home() {
     <section id="home" className="home">
       <div className="hero-grid-bg"></div>
       <div className="hero-inner">
-
+        <div className="hero-tag">
+          <span className="hero-tag-dot"></span>
+          Master's Student · Open to opportunities
+        </div>
         
 
         <h1 className="hero-title">
