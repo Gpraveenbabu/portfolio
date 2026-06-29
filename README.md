@@ -1,4 +1,4 @@
-# 🚀 AI Portfolio
+# 🚀 My Portfolio
 
 <div align="center">
 
