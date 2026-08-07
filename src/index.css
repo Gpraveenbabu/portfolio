@@ -703,12 +703,11 @@ input, textarea {
   gap: 24px;
 }
 
-.skill-group-label {
-  min-width: 150px;
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--ink);
-  padding-top: 8px;
+.skill-group-label{
+    width:150px;
+    font-size:18px;
+    font-weight:600;
+    color:#222;
 }
 
 .skill-tags {
@@ -752,6 +751,38 @@ input, textarea {
 }
 
 /* certifications */
+/* ---------- Certification Cards ---------- */
+
+.cert-grid{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.cert-card{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:18px 22px;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    background:#fff;
+    transition:.3s;
+}
+
+.cert-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+
+.cert-icon{
+    font-size:22px;
+}
+
+.cert-name{
+    font-size:16px;
+    font-weight:500;
+}
 .cert-list {
   list-style: none;
   display: flex;
@@ -784,23 +815,28 @@ input, textarea {
   gap: 10px;
 }
 
-.lang-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 16px;
+.lang-card{
+    padding:28px;
+    border-radius:18px;
+    background:#fff;
+    border:1px solid #e5e7eb;
+    transition:.3s;
 }
 
-.lang-name {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 3px;
+.lang-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
 }
 
-.lang-level {
-  font-size: 12px;
-  color: var(--ink-light);
+.lang-name{
+    font-size:20px;
+    font-weight:600;
+}
+
+.lang-level{
+    margin-top:8px;
+    font-size:15px;
+    color:#6b7280;
 }
 
 @media (max-width: 768px) {
