@@ -58,7 +58,7 @@ function About() {
   return (
     <section id="about" className="about">
 
-      <div className="reveal" ref={introRef}>
+      <div className="reveal about-intro" ref={introRef}>
         <p className="section-label">About me</p>
         <h2>About Me</h2>
         <p className="about-lead">
