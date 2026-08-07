@@ -10,10 +10,13 @@ const skillGroups = [
 ];
 
 const certifications = [
-  "Google Data Analytics Professional Certificate",
+  "Google Data Analytics Specialization",
   "Front-End Development – freeCodeCamp",
-  "Advanced Python Programming – NPTEL",
-  "Generative AI & LLMs – LinkedIn Learning",
+  "Generative AI & Large Language Models",
+  "Privacy & Security in Online Social Media (NPTEL – Silver)",
+  "Psychology of Learning (NPTEL – Gold)",
+  "Programming in Java (NPTEL – Elite)",
+  "Joy of Computing using Python (NPTEL – Silver)",
 ];
 
 const languages = [
