@@ -385,7 +385,6 @@ function About() {
 
     <div key={cert} className="cert-card">
 
-      <div className="cert-icon">🏆</div>
 
       <div className="cert-name">
         {cert}
