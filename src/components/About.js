@@ -277,7 +277,55 @@ research ideas into scalable, production-ready applications.
   </div>
 </div>
       
+<div className="about-block reveal" ref={skillRef}>
+  <p className="section-label">Skills</p>
 
+  <div className="skills-section">
+    {skillGroups.map((g) => (
+      <div key={g.label} className="skill-group">
+        <div className="skill-group-label">{g.label}</div>
+
+        <div className="skill-tags">
+          {g.items.map((s) => (
+            <span key={s} className="skill-tag">
+              {s}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<div className="about-bottom reveal" ref={certRef}>
+
+  <div className="about-block-half">
+    <p className="section-label">Certifications</p>
+
+    <ul className="cert-list">
+      {certifications.map((c) => (
+        <li key={c} className="cert-item">
+          <span className="cert-dot"></span>
+          {c}
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div className="about-block-half">
+    <p className="section-label">Languages</p>
+
+    <div className="lang-grid">
+      {languages.map((l) => (
+        <div key={l.lang} className="lang-card">
+          <div className="lang-name">{l.lang}</div>
+          <div className="lang-level">{l.level}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+</div>
     </section>
   );
 }
