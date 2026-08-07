@@ -60,7 +60,7 @@ function About() {
 
       <div className="reveal" ref={introRef}>
         <p className="section-label">About me</p>
-        <h2>Engineer at the intersection of AI &amp; web.</h2>
+        <h2>About Me</h2>
         <p className="about-lead">
           I'm a Master's student in Applied Computer Science at the University of Göttingen,
           with a strong focus on Artificial Intelligence and emerging technologies. I build
