@@ -498,6 +498,27 @@ input, textarea {
   line-height: 1.8;
   max-width: 640px;
 }
+.about-intro {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-intro .section-label {
+  display: block;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.about-intro .section-label::before {
+  display: none;
+}
+
+.about-intro .about-lead {
+  margin: 0 auto;
+  max-width: 750px;
+}
 
 .about-block {
   display: flex;
