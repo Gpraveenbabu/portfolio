@@ -1,16 +1,46 @@
 import React, { useEffect, useRef } from "react";
 
 const skillGroups = [
-  { label: "Languages", items: ["Python", "JavaScript", "TypeScript", "Java", "C"] },
-  { label: "Frameworks", items: ["React", "Node.js", "FastAPI", "LangChain"] },
-  { label: "AI / ML", items: ["Deep Learning", "CNN", "NLP", "Generative AI", "RAG Systems"] },
-  { label: "Tools", items: ["Docker", "Git", "PostgreSQL", "REST APIs"] },
-  { label: "Data Science", items: ["Pandas", "NumPy", "Scikit-learn", "TensorFlow", "PyTorch"] },
-  { label: "Cloud", items: ["Vercel", "AWS (Basics)"] },
+  {
+    label: "Languages",
+    items: ["Python", "JavaScript", "TypeScript", "Java", "C"],
+  },
+  {
+    label: "Frameworks",
+    items: ["React", "Node.js", "FastAPI", "LangChain"],
+  },
+  {
+    label: "AI / ML",
+    items: [
+      "Deep Learning",
+      "CNN",
+      "NLP",
+      "Generative AI",
+      "RAG Systems",
+    ],
+  },
+  {
+    label: "Tools",
+    items: ["Docker", "Git", "PostgreSQL", "REST APIs"],
+  },
+  {
+    label: "Data Science",
+    items: [
+      "Pandas",
+      "NumPy",
+      "Scikit-learn",
+      "TensorFlow",
+      "PyTorch",
+    ],
+  },
+  {
+    label: "Cloud",
+    items: ["Vercel", "AWS (Basics)"],
+  },
 ];
 
 const certifications = [
-  "Google Data Analytics Specialization",
+  "Google Data Analytics Professional Certificate",
   "Front-End Development – freeCodeCamp",
   "Generative AI & Large Language Models",
   "Privacy & Security in Online Social Media (NPTEL – Silver)",
@@ -36,7 +66,7 @@ function useReveal(ref, delay = 0) {
           }, delay);
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
 
     if (ref.current) observer.observe(ref.current);
@@ -61,42 +91,40 @@ function About() {
   return (
     <section id="about" className="about">
 
-  {/* ABOUT */}
+      {/* ABOUT */}
 
-  <div className="reveal about-intro" ref={introRef}>
+      <div className="reveal about-intro" ref={introRef}>
 
-    <div className="section-heading">
-      <h2>About Me</h2>
-    </div>
+        <div className="section-heading">
+          <h2>About Me</h2>
+        </div>
 
-    <p className="about-lead">
-      I'm a Master's student in Applied Computer Science at
-      Georg-August-Universität Göttingen with a strong passion for
-      Artificial Intelligence, Large Language Models, Computer Vision,
-      Retrieval-Augmented Generation (RAG), and Full-Stack AI Systems.
+        <p className="about-lead">
+          I'm a Master's student in Applied Computer Science at
+          Georg-August-Universität Göttingen, specializing in Artificial
+          Intelligence, Large Language Models, Computer Vision,
+          Retrieval-Augmented Generation (RAG), and Full-Stack AI Systems.
 
-      <br /><br />
+          <br /><br />
 
-      I enjoy transforming research ideas into scalable, real-world
-      applications and continuously learning new technologies that solve
-      meaningful problems.
-    </p>
+          I enjoy building intelligent software that transforms research ideas
+          into scalable, production-ready applications while continuously
+          exploring modern AI technologies.
+        </p>
 
-  </div>
-
+      </div>
 
       {/* EXPERIENCE */}
 
       <div className="about-block reveal" ref={expRef}>
 
         <div className="section-heading">
-    <h2>Experience</h2>
-</div>
+          <h2>Experience</h2>
+        </div>
 
         <div className="experience-timeline">
 
           <div className="experience-item">
-
             <div className="experience-left">
               <div className="experience-dot"></div>
             </div>
@@ -104,7 +132,6 @@ function About() {
             <div className="experience-card">
 
               <div className="experience-header">
-
                 <div>
                   <h3>Full Stack, AI/ML & Cyber Security Intern</h3>
                   <h4>AIMER Society</h4>
@@ -113,14 +140,13 @@ function About() {
                 <span className="experience-date">
                   Dec 2024 – Apr 2025
                 </span>
-
               </div>
 
               <p>
-                Built interactive cryptography visualization software using
-                React, D3.js and Konva.js while developing CNN and Hugging Face
-                Transformer models for image classification and object
-                detection.
+                Built interactive cryptography visualization platforms,
+                developed CNN and Hugging Face Transformer models for image
+                classification and object detection while managing complete
+                machine learning workflows.
               </p>
 
               <div className="experience-tags">
@@ -128,11 +154,10 @@ function About() {
                 <span>D3.js</span>
                 <span>CNN</span>
                 <span>Transformers</span>
-                <span>Hugging Face</span>
+                <span>Object Detection</span>
               </div>
 
             </div>
-
           </div>
 
           <div className="experience-item">
@@ -144,7 +169,6 @@ function About() {
             <div className="experience-card">
 
               <div className="experience-header">
-
                 <div>
                   <h3>Artificial Intelligence Intern</h3>
                   <h4>AIMER Society</h4>
@@ -153,13 +177,11 @@ function About() {
                 <span className="experience-date">
                   Jun 2024 – Aug 2024
                 </span>
-
               </div>
 
               <p>
-                Worked on CNNs, YOLO, NLP pipelines and modern Large Language
-                Models including GPT, Claude and Llama for real-world AI
-                applications.
+                Worked on CNNs, YOLO, NLP pipelines, GPT, Claude and Llama
+                models for real-world AI applications.
               </p>
 
               <div className="experience-tags">
@@ -171,7 +193,6 @@ function About() {
               </div>
 
             </div>
-
           </div>
 
           <div className="experience-item">
@@ -183,7 +204,6 @@ function About() {
             <div className="experience-card">
 
               <div className="experience-header">
-
                 <div>
                   <h3>Machine Learning Intern</h3>
                   <h4>SkillDzire</h4>
@@ -192,23 +212,22 @@ function About() {
                 <span className="experience-date">
                   Apr 2024 – May 2024
                 </span>
-
               </div>
 
               <p>
-                Developed forecasting models using ARIMA, Prophet, LSTM,
-                XGBoost, LightGBM and SHAP Explainability.
+                Built forecasting models using LSTM, Prophet, XGBoost,
+                LightGBM and SHAP explainability.
               </p>
 
               <div className="experience-tags">
                 <span>LSTM</span>
-                <span>XGBoost</span>
                 <span>Prophet</span>
+                <span>XGBoost</span>
+                <span>LightGBM</span>
                 <span>SHAP</span>
               </div>
 
             </div>
-
           </div>
 
           <div className="experience-item">
@@ -220,7 +239,6 @@ function About() {
             <div className="experience-card">
 
               <div className="experience-header">
-
                 <div>
                   <h3>Web Development Intern</h3>
                   <h4>Techno Hacks EduTech</h4>
@@ -229,13 +247,11 @@ function About() {
                 <span className="experience-date">
                   Sep 2023 – Oct 2023
                 </span>
-
               </div>
 
               <p>
-                Built responsive web applications including calculators,
-                currency converters and interactive JavaScript projects using
-                HTML, CSS and JavaScript.
+                Developed responsive web applications using HTML, CSS and
+                JavaScript.
               </p>
 
               <div className="experience-tags">
@@ -245,7 +261,6 @@ function About() {
               </div>
 
             </div>
-
           </div>
 
         </div>
@@ -257,8 +272,8 @@ function About() {
       <div className="about-block reveal" ref={eduRef}>
 
         <div className="section-heading">
-    <h2>Education</h2>
-</div>
+          <h2>Education</h2>
+        </div>
 
         <div className="experience-timeline">
 
@@ -271,16 +286,14 @@ function About() {
             <div className="experience-card">
 
               <div className="experience-header">
-
                 <div>
                   <h3>Master's in Applied Computer Science</h3>
                   <h4>Georg-August-Universität Göttingen</h4>
                 </div>
 
                 <span className="experience-date">
-                  2025 – Present
+                  Oct 2025 – Present
                 </span>
-
               </div>
 
               <p>
@@ -290,7 +303,7 @@ function About() {
               </p>
 
               <div className="experience-tags">
-                <span>AI</span>
+                <span>Artificial Intelligence</span>
                 <span>LLMs</span>
                 <span>Computer Vision</span>
                 <span>RAG</span>
@@ -310,7 +323,6 @@ function About() {
             <div className="experience-card">
 
               <div className="experience-header">
-
                 <div>
                   <h3>Bachelor's in Computer Science</h3>
                   <h4>R.V.R & J.C College of Engineering</h4>
@@ -319,19 +331,18 @@ function About() {
                 <span className="experience-date">
                   2021 – 2025
                 </span>
-
               </div>
 
               <p>
                 Graduated with a GPA of 9.11/10 while building a strong
                 foundation in algorithms, software engineering, machine
-                learning, artificial intelligence and full-stack development.
+                learning, artificial intelligence and web development.
               </p>
 
               <div className="experience-tags">
                 <span>GPA 9.11</span>
-                <span>Machine Learning</span>
                 <span>Algorithms</span>
+                <span>Machine Learning</span>
                 <span>Software Engineering</span>
               </div>
 
@@ -347,8 +358,8 @@ function About() {
       <div className="about-block reveal" ref={skillRef}>
 
         <div className="section-heading">
-    <h2>Skills</h2>
-</div>
+          <h2>Skills</h2>
+        </div>
 
         <div className="skills-section">
 
@@ -384,36 +395,39 @@ function About() {
 
       <div className="about-bottom reveal" ref={certRef}>
 
+        {/* CERTIFICATIONS */}
+
         <div className="about-block-half">
 
           <div className="section-heading">
-    <h2>Certifications</h2>
-</div>
+            <h2>Certifications</h2>
+          </div>
 
           <div className="cert-grid">
 
-  {certifications.map((cert) => (
+            {certifications.map((cert) => (
 
-    <div key={cert} className="cert-card">
+              <div key={cert} className="cert-card">
 
+                <div className="cert-name">
+                  {cert}
+                </div>
 
-      <div className="cert-name">
-        {cert}
-      </div>
+              </div>
 
-    </div>
+            ))}
 
-  ))}
-
-</div>
+          </div>
 
         </div>
+
+        {/* LANGUAGES */}
 
         <div className="about-block-half">
 
           <div className="section-heading">
-    <h2>Languages</h2>
-</div>
+            <h2>Languages</h2>
+          </div>
 
           <div className="lang-grid">
 
