@@ -59,7 +59,34 @@ input, textarea {
   position: relative;
   overflow: hidden;
 }
+.social-links{
+    display:flex;
+    gap:22px;
+    margin:30px 0;
+}
 
+.social-links a{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#fff;
+    border:1px solid #e5e7eb;
+    color:#1f2937;
+    font-size:22px;
+    transition:.3s ease;
+    text-decoration:none;
+}
+
+.social-links a:hover{
+    transform:translateY(-5px);
+    background:#2563eb;
+    color:white;
+    border-color:#2563eb;
+    box-shadow:0 10px 25px rgba(37,99,235,.25);
+}
 .hero-grid-bg {
   position: absolute;
   inset: 0;
