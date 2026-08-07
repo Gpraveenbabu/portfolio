@@ -20,9 +20,9 @@ const certifications = [
 ];
 
 const languages = [
-  { lang: "English", level: "Professional" },
+  { lang: "English", level: "Professional Working Proficiency" },
   { lang: "German", level: "B1 (Learning)" },
-  { lang: "Hindi", level: "Professional" },
+  { lang: "Hindi", level: "Professional Working Proficiency" },
   { lang: "Telugu", level: "Native" },
 ];
 
@@ -379,21 +379,23 @@ function About() {
 
           <p className="section-label">Certifications</p>
 
-          <ul className="cert-list">
+          <div className="cert-grid">
 
-            {certifications.map((cert) => (
+  {certifications.map((cert) => (
 
-              <li key={cert} className="cert-item">
+    <div key={cert} className="cert-card">
 
-                <span className="cert-dot"></span>
+      <div className="cert-icon">🏆</div>
 
-                {cert}
+      <div className="cert-name">
+        {cert}
+      </div>
 
-              </li>
+    </div>
 
-            ))}
+  ))}
 
-          </ul>
+</div>
 
         </div>
 
