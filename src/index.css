@@ -769,6 +769,13 @@ input, textarea {
     background:#fff;
     transition:.3s;
 }
+.cert-card{
+    padding:18px 24px;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    margin-bottom:15px;
+    text-align:left;
+}
 
 .cert-card:hover{
     transform:translateY(-4px);
@@ -822,6 +829,10 @@ input, textarea {
     border:1px solid #e5e7eb;
     transition:.3s;
 }
+.lang-card{
+    min-height:110px;
+    padding:28px;
+}
 
 .lang-card:hover{
     transform:translateY(-4px);
@@ -829,7 +840,7 @@ input, textarea {
 }
 
 .lang-name{
-    font-size:20px;
+    font-size:1.25rem;
     font-weight:600;
 }
 
