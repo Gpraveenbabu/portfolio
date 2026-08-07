@@ -689,43 +689,50 @@ input, textarea {
   padding: 3px 10px;
   border-radius: 100px;
 }
+/* ---------- Skills ---------- */
 
-/* skills */
 .skills-section {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 22px;
 }
 
 .skill-group {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: 24px;
 }
 
 .skill-group-label {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--ink-light);
-  letter-spacing: 0.04em;
-  min-width: 110px;
-  padding-top: 5px;
-  flex-shrink: 0;
+  min-width: 150px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  padding-top: 8px;
 }
 
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 12px;
 }
 
 .skill-tag {
-  font-size: 12px;
-  padding: 4px 12px;
-  border-radius: 100px;
-  border: 1px solid var(--border);
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
   background: var(--surface);
-  color: var(--ink-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  transform: translateY(-2px);
 }
 
 /* bottom row */
