@@ -63,8 +63,9 @@ function About() {
 
       {/* ABOUT */}
 
-      <div className="reveal about-intro" ref={introRef}>
-        <p className="section-label">About Me</p>
+        <div className="section-heading">
+    <h2>About Me</h2>
+</div>
 
         <h2>About Me</h2>
 
@@ -86,7 +87,9 @@ function About() {
 
       <div className="about-block reveal" ref={expRef}>
 
-        <p className="section-label">Experience</p>
+        <div className="section-heading">
+    <h2>Experience</h2>
+</div>
 
         <div className="experience-timeline">
 
@@ -251,7 +254,9 @@ function About() {
 
       <div className="about-block reveal" ref={eduRef}>
 
-        <p className="section-label">Education</p>
+        <div className="section-heading">
+    <h2>Education</h2>
+</div>
 
         <div className="experience-timeline">
 
@@ -339,7 +344,9 @@ function About() {
 
       <div className="about-block reveal" ref={skillRef}>
 
-        <p className="section-label">Skills</p>
+        <div className="section-heading">
+    <h2>Sills</h2>
+</div>
 
         <div className="skills-section">
 
@@ -377,7 +384,9 @@ function About() {
 
         <div className="about-block-half">
 
-          <p className="section-label">Certifications</p>
+          <div className="section-heading">
+    <h2>Certifications</h2>
+</div>
 
           <div className="cert-grid">
 
@@ -400,7 +409,9 @@ function About() {
 
         <div className="about-block-half">
 
-          <p className="section-label">Languages</p>
+          <div className="section-heading">
+    <h2>Languages</h2>
+</div>
 
           <div className="lang-grid">
 
