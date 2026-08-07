@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
 function Home() {
   return (
     <section id="home" className="home">
@@ -20,7 +21,45 @@ function Home() {
           Computer Science at the University of Göttingen, passionate about building
           real-world AI solutions.
         </p>
+        <div className="social-links">
 
+  <a
+    href="mailto:yourmail@gmail.com"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Email"
+  >
+    <FaEnvelope />
+  </a>
+
+  <a
+    href="https://www.linkedin.com/in/YOUR-LINKEDIN"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="LinkedIn"
+  >
+    <FaLinkedin />
+  </a>
+
+  <a
+    href="https://leetcode.com/u/YOUR-LEETCODE/"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="LeetCode"
+  >
+    <SiLeetcode />
+  </a>
+
+  <a
+    href="https://github.com/YOUR-GITHUB"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="GitHub"
+  >
+    <FaGithub />
+  </a>
+
+</div>
         <div className="hero-actions">
           <a href="#projects" className="btn-primary">
             <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -35,15 +74,14 @@ function Home() {
             Get in touch
           </a>
         </div>
-
+        <div className="stat">
+            <span className="stat-num">10+</span>
+            <span className="stat-label">Projects shipped</span>
+          </div>
         <div className="hero-stats">
           <div className="stat">
             <span className="stat-num">1</span>
             <span className="stat-label">Publication (2025)</span>
-          </div>
-          <div className="stat">
-            <span className="stat-num">3+</span>
-            <span className="stat-label">Projects shipped</span>
           </div>
           <div className="stat">
             <span className="stat-num">9.11</span>
