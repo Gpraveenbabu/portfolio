@@ -1,429 +1,293 @@
-import React, { useEffect, useRef } from "react";
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
 
-const skillGroups = [
-  { label: "Languages", items: ["Python", "JavaScript", "TypeScript", "Java", "C"] },
-  { label: "Frameworks", items: ["React", "Node.js", "FastAPI", "LangChain"] },
-  { label: "AI / ML", items: ["Deep Learning", "CNN", "NLP", "Generative AI", "RAG Systems"] },
-  { label: "Tools", items: ["Docker", "Git", "PostgreSQL", "REST APIs"] },
-  { label: "Data Science", items: ["Pandas", "NumPy", "Scikit-learn", "TensorFlow", "PyTorch"] },
-  { label: "Cloud", items: ["Vercel", "AWS (Basics)"] },
-];
+*, *::before, *::after {box-sizing: border-box;margin: 0;padding: 0;}
 
-const certifications = [
-  "Google Data Analytics Professional Certificate",
-  "Front-End Development – freeCodeCamp",
-  "Advanced Python Programming – NPTEL",
-  "Generative AI & LLMs – LinkedIn Learning",
-];
+ {--ink: #0f1117;--ink-muted: #6b7280;--ink-light: #9ca3af;--surface: #ffffff;--surface-2: #f8f8f6;--surface-3: #f0efe9;--accent: #1a56db;--accent-light: #dbeafe;--accent-2: #0e9f6e;--border: #e5e4de;--radius: 12px;--serif: 'DM Serif Display', Georgia, serif;--sans: 'DM Sans', system-ui, sans-serif;}
 
-const languages = [
-  { lang: "English", level: "Professional" },
-  { lang: "German", level: "B1 (Learning)" },
-  { lang: "Hindi", level: "Professional" },
-  { lang: "Telugu", level: "Native" },
-];
+html {scroll-behavior: smooth;}
 
-function useReveal(ref, delay = 0) {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            ref.current?.classList.add("visible");
-          }, delay);
-        }
-      },
-      { threshold: 0.15 }
-    );
+body {font-family: var(--sans);background: var(--surface);color: var(--ink);line-height: 1.6;-webkit-font-smoothing: antialiased;}
 
-    if (ref.current) observer.observe(ref.current);
+a {text-decoration: none;color: inherit;}
 
-    return () => observer.disconnect();
-  }, [ref, delay]);
+button {font-family: var(--sans);cursor: pointer;border: none;outline: none;}
+
+input, textarea {font-family: var(--sans);outline: none;}.home {min-height: 100vh;display: flex;align-items: center;padding: 120px 5vw 80px;background: var(--surface);position: relative;overflow: hidden;}
+
+.hero-grid-bg {position: absolute;inset: 0;z-index: 0;background-image:linear-gradient(var(--border) 1px, transparent 1px),linear-gradient(90deg, var(--border) 1px, transparent 1px);background-size: 60px 60px;opacity: 0.5;-webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);}
+
+.hero-inner {position: relative;z-index: 1;max-width: 860px;animation: heroFadeUp 0.6s ease both;}
+
+.hero-tag {display: inline-flex;align-items: center;gap: 8px;font-size: 12px;font-weight: 500;letter-spacing: 0.08em;text-transform: uppercase;color: var(--accent);background: var(--accent-light);padding: 5px 14px;border-radius: 100px;margin-bottom: 1.5rem;}
+
+.hero-tag-dot {width: 6px;height: 6px;border-radius: 50%;background: var(--accent);display: inline-block;}
+
+.hero-title {font-family: var(--serif);font-size: clamp(48px, 7vw, 88px);line-height: 1.05;letter-spacing: -2px;color: var(--ink);margin-bottom: 1.25rem;}
+
+.hero-title em {font-style: italic;color: var(--ink-muted);}
+
+.hero-sub {font-size: 18px;font-weight: 300;color: var(--ink-muted);max-width: 520px;margin-bottom: 2.5rem;line-height: 1.7;}
+
+.hero-actions {display: flex;gap: 12px;flex-wrap: wrap;margin-bottom: 0;}
+
+.btn-primary {display: inline-flex;align-items: center;gap: 8px;padding: 13px 24px;background: var(--ink);color: #fff;border-radius: 100px;font-size: 14px;font-weight: 500;text-decoration: none;transition: transform 0.2s, box-shadow 0.2s;box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);}
+
+.btn-primary {transform: translateY(-2px);box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);color: #fff;}
+
+.btn-secondary {display: inline-flex;align-items: center;gap: 8px;padding: 13px 24px;background: transparent;color: var(--ink);border-radius: 100px;font-size: 14px;font-weight: 500;text-decoration: none;border: 1px solid var(--border);transition: background 0.2s, border-color 0.2s;}
+
+.btn-secondary {background: var(--surface-2);border-color: #c5c3bb;color: var(--ink);}
+
+.hero-stats {display: flex;gap: 2.5rem;margin-top: 4rem;padding-top: 2.5rem;border-top: 1px solid var(--border);flex-wrap: wrap;}
+
+.stat-num {font-family: var(--serif);font-size: 32px;color: var(--ink);display: block;line-height: 1;margin-bottom: 4px;}
+
+.stat-label {font-size: 13px;color: var(--ink-muted);}
+
+@keyframes heroFadeUp {from { opacity: 0; transform: translateY(24px); }to   { opacity: 1; transform: translateY(0); }}
+
+@media (max-width: 600px) {.hero-stats { gap: 1.5rem; }.hero-title { letter-spacing: -1px; }}.footer {background: #0f1117;border-top: 1px solid rgba(255, 255, 255, 0.06);padding: 22px 5vw;display: flex;justify-content: space-between;align-items: center;font-size: 13px;color: #4b5563;}
+
+@media (max-width: 500px) {.footer { flex-direction: column; gap: 6px; text-align: center; }}/* App-level resets — all styles live in component CSS files */.App {overflow-x: hidden;}.navbar {position: fixed;top: 0; left: 0; right: 0;z-index: 100;display: flex;align-items: center;justify-content: space-between;padding: 0 5vw;height: 64px;background: rgba(255,255,255,0.75);backdrop-filter: blur(12px);-webkit-backdrop-filter: blur(12px);border-bottom: 1px solid transparent;transition: border-color 0.3s, background 0.3s;}
+
+.navbar--scrolled {background: rgba(255,255,255,0.92);border-bottom-color: var(--border);}
+
+.nav-logo {font-family: var(--serif);font-size: 20px;color: var(--ink);letter-spacing: -0.3px;text-decoration: none;}
+
+.nav-links {display: flex;gap: 2rem;list-style: none;align-items: center;}
+
+.nav-links a {font-size: 14px;font-weight: 400;color: var(--ink-muted);letter-spacing: 0.01em;transition: color 0.2s;text-decoration: none;}.nav-links a { color: var(--ink); }
+
+.nav-cta {font-size: 13px !important;font-weight: 500 !important;padding: 8px 18px;background: var(--ink);color: #fff !important;border-radius: 100px;transition: opacity 0.2s !important;}.nav-cta { opacity: 0.8; color: #fff !important; }.home {min-height: 100vh;display: flex;align-items: center;padding: 120px 5vw 80px;background: var(--surface);position: relative;overflow: hidden;}
+
+.hero-grid-bg {position: absolute;inset: 0;z-index: 0;background-image:linear-gradient(var(--border) 1px, transparent 1px),linear-gradient(90deg, var(--border) 1px, transparent 1px);background-size: 60px 60px;opacity: 0.5;-webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);}
+
+.hero-inner {position: relative;z-index: 1;max-width: 860px;animation: heroFadeUp 0.6s ease both;}
+
+.hero-tag {display: inline-flex;align-items: center;gap: 8px;font-size: 12px;font-weight: 500;letter-spacing: 0.08em;text-transform: uppercase;color: var(--accent);background: var(--accent-light);padding: 5px 14px;border-radius: 100px;margin-bottom: 1.5rem;}
+
+.hero-tag-dot {width: 6px;height: 6px;border-radius: 50%;background: var(--accent);display: inline-block;}
+
+.hero-title {font-family: var(--serif);font-size: clamp(48px, 7vw, 88px);line-height: 1.05;letter-spacing: -2px;color: var(--ink);margin-bottom: 1.25rem;}
+
+.hero-title em {font-style: italic;color: var(--ink-muted);}
+
+.hero-sub {font-size: 18px;font-weight: 300;color: var(--ink-muted);max-width: 520px;margin-bottom: 2.5rem;line-height: 1.7;}
+
+.hero-actions {display: flex;gap: 12px;flex-wrap: wrap;margin-bottom: 0;}
+
+.btn-primary {display: inline-flex;align-items: center;gap: 8px;padding: 13px 24px;background: var(--ink);color: #fff;border-radius: 100px;font-size: 14px;font-weight: 500;text-decoration: none;transition: transform 0.2s, box-shadow 0.2s;box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);}
+
+.btn-primary {transform: translateY(-2px);box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);color: #fff;}
+
+.btn-secondary {display: inline-flex;align-items: center;gap: 8px;padding: 13px 24px;background: transparent;color: var(--ink);border-radius: 100px;font-size: 14px;font-weight: 500;text-decoration: none;border: 1px solid var(--border);transition: background 0.2s, border-color 0.2s;}
+
+.btn-secondary {background: var(--surface-2);border-color: #c5c3bb;color: var(--ink);}
+
+.hero-stats {display: flex;gap: 2.5rem;margin-top: 4rem;padding-top: 2.5rem;border-top: 1px solid var(--border);flex-wrap: wrap;}
+
+.stat-num {font-family: var(--serif);font-size: 32px;color: var(--ink);display: block;line-height: 1;margin-bottom: 4px;}
+
+.stat-label {font-size: 13px;color: var(--ink-muted);}
+
+@keyframes heroFadeUp {from { opacity: 0; transform: translateY(24px); }to   { opacity: 1; transform: translateY(0); }}
+
+@media (max-width: 600px) {.hero-stats { gap: 1.5rem; }.hero-title { letter-spacing: -1px; }}.about {padding: 100px 5vw;background: var(--surface-2);border-top: 1px solid var(--border);border-bottom: 1px solid var(--border);display: flex;flex-direction: column;gap: 64px;}
+
+.about > .reveal {max-width: 1100px;width: 100%;margin-left: auto;margin-right: auto;}
+
+.reveal {opacity: 0;transform: translateY(24px);transition: opacity 0.65s ease, transform 0.65s ease;}.reveal.visible {opacity: 1;transform: translateY(0);}
+
+.section-label {font-size: 11px;font-weight: 500;letter-spacing: 0.1em;text-transform: uppercase;color: var(--accent);margin-bottom: 1rem;display: flex;align-items: center;gap: 8px;}.section-label::before {content: '';width: 20px;height: 1px;background: var(--accent);}
+
+.about-intro h2 {font-family: var(--serif);font-size: clamp(28px, 3.5vw, 42px);letter-spacing: -1px;line-height: 1.1;color: var(--ink);margin-bottom: 1rem;}
+
+.about-lead {font-size: 16px;color: var(--ink-muted);line-height: 1.8;max-width: 640px;}.about-intro {max-width: 900px;margin: 0 auto;text-align: center;}
+
+.about-intro .section-label {display: block;justify-content: center;font-size: 14px;font-weight: 700;}
+
+.about-intro .section-label::before {display: none;}
+
+.about-intro .about-lead {margin: 0 auto;max-width: 750px;}
+
+.about-block {display: flex;flex-direction: column;gap: 16px;}
+
+/* experience // ---------- Experience Timeline ---------- */
+
+.experience-timeline {position: relative;margin-top: 30px;}
+
+.experience-timeline::before {content: "";position: absolute;left: 17px;top: 0;bottom: 0;width: 2px;background: var(--border);}
+
+.experience-item {display: flex;gap: 24px;margin-bottom: 35px;}
+
+.experience-left {width: 36px;display: flex;justify-content: center;flex-shrink: 0;}
+
+.experience-dot {width: 14px;height: 14px;border-radius: 50%;background: var(--accent);border: 4px solid white;box-shadow: 0 0 0 2px var(--accent-light);margin-top: 20px;z-index: 2;}
+
+.experience-card {flex: 1;background: var(--surface);border: 1px solid var(--border);border-radius: 16px;padding: 24px;transition: all .3s ease;}
+
+.experience-card {transform: translateY(-5px);box-shadow: 0 15px 35px rgba(0,0,0,.08);border-color: var(--accent);}
+
+.experience-header {display: flex;justify-content: space-between;align-items: flex-start;gap: 20px;flex-wrap: wrap;}
+
+.experience-header h3 {font-size: 20px;font-weight: 700;margin-bottom: 4px;color: var(--ink);}
+
+.experience-header h4 {font-size: 15px;color: var(--accent);font-weight: 500;}
+
+.experience-date {background: var(--accent-light);color: var(--accent);padding: 6px 14px;border-radius: 999px;font-size: 13px;font-weight: 600;}
+
+.experience-card p {margin: 18px 0;line-height: 1.8;color: var(--ink-muted);}
+
+.experience-tags {display: flex;flex-wrap: wrap;gap: 10px;}
+
+.experience-tags span {background: var(--surface-2);border: 1px solid var(--border);border-radius: 999px;padding: 6px 14px;font-size: 12px;font-weight: 500;transition: .3s;}
+
+.experience-tags span {background: var(--accent);color: white;border-color: var(--accent);}
+
+@media (max-width:768px){
+
+.experience-header{flex-direction;}
+
+.experience-timeline::before{left:16px;}
+
 }
 
-function About() {
-  const introRef = useRef(null);
-  const expRef = useRef(null);
-  const eduRef = useRef(null);
-  const skillRef = useRef(null);
-  const certRef = useRef(null);
+/* education */.edu-list {display: grid;grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));gap: 14px;}
 
-  useReveal(introRef);
-  useReveal(expRef, 100);
-  useReveal(eduRef, 200);
-  useReveal(skillRef, 300);
-  useReveal(certRef, 400);
+.edu-card {background: var(--surface);border: 1px solid var(--border);border-radius: var(--radius);padding: 20px 22px;}
 
-  return (
-    <section id="about" className="about">
+.edu-school {font-size: 14px;font-weight: 500;color: var(--ink);margin-bottom: 4px;}
 
-      {/* ABOUT */}
+.edu-degree {font-size: 13px;color: var(--ink-muted);margin-bottom: 8px;}
 
-      <div className="reveal about-intro" ref={introRef}>
-        <p className="section-label">About Me</p>
+.edu-detail {font-size: 12px;font-weight: 500;color: var(--accent);background: var(--accent-light);display: inline-block;padding: 3px 10px;border-radius: 100px;}
 
-        <h2>About Me</h2>
+/* skills */.skills-section {display: flex;flex-direction: column;gap: 14px;}
 
-        <p className="about-lead">
-          I'm a Master's student in Applied Computer Science at
-          Georg-August-Universität Göttingen with a strong passion for
-          Artificial Intelligence, Large Language Models, Computer Vision,
-          Retrieval-Augmented Generation (RAG), and Full-Stack AI Systems.
+.skill-group {display: flex;align-items: flex-start;gap: 16px;}
 
-          <br /><br />
+.skill-group-label {font-size: 12px;font-weight: 500;color: var(--ink-light);letter-spacing: 0.04em;min-width: 110px;padding-top: 5px;flex-shrink: 0;}
 
-          I enjoy transforming research ideas into scalable, real-world
-          applications and continuously learning new technologies that solve
-          meaningful problems.
-        </p>
-      </div>
+.skill-tags {display: flex;flex-wrap: wrap;gap: 7px;}
 
-      {/* EXPERIENCE */}
+.skill-tag {font-size: 12px;padding: 4px 12px;border-radius: 100px;border: 1px solid var(--border);background: var(--surface);color: var(--ink-muted);}
 
-      <div className="about-block reveal" ref={expRef}>
+/* bottom row */.about-bottom {display: grid;grid-template-columns: 1fr 1fr;gap: 48px;align-items: start;max-width: 1100px;margin: 0 auto;width: 100%;}
 
-        <p className="section-label">Experience</p>
+.about-block-half {display: flex;flex-direction: column;gap: 12px;}
 
-        <div className="experience-timeline">
+/* certifications */.cert-list {list-style: none;display: flex;flex-direction: column;gap: 10px;}
 
-          <div className="experience-item">
+.cert-item {display: flex;align-items: flex-start;gap: 10px;font-size: 13px;color: var(--ink-muted);line-height: 1.5;}
 
-            <div className="experience-left">
-              <div className="experience-dot"></div>
-            </div>
+.cert-dot {width: 6px;height: 6px;border-radius: 50%;background: var(--accent);flex-shrink: 0;margin-top: 5px;}
 
-            <div className="experience-card">
+/* languages */.lang-grid {display: grid;grid-template-columns: 1fr 1fr;gap: 10px;}
 
-              <div className="experience-header">
+.lang-card {background: var(--surface);border: 1px solid var(--border);border-radius: 10px;padding: 14px 16px;}
 
-                <div>
-                  <h3>Full Stack, AI/ML & Cyber Security Intern</h3>
-                  <h4>AIMER Society</h4>
-                </div>
+.lang-name {font-size: 14px;font-weight: 500;color: var(--ink);margin-bottom: 3px;}
 
-                <span className="experience-date">
-                  Dec 2024 – Apr 2025
-                </span>
+.lang-level {font-size: 12px;color: var(--ink-light);}
 
-              </div>
+@media (max-width: 768px) {.about-bottom { grid-template-columns: 1fr; }.skill-group { flex-direction: column; gap: 8px; }.skill-group-label { min-width: unset; }}.projects {padding: 100px 5vw;background: var(--surface);}
 
-              <p>
-                Built interactive cryptography visualization software using
-                React, D3.js and Konva.js while developing CNN and Hugging Face
-                Transformer models for image classification and object
-                detection.
-              </p>
+.projects-header {display: flex;justify-content: space-between;align-items: flex-end;margin-bottom: 2.5rem;max-width: 1100px;margin-left: auto;margin-right: auto;}
 
-              <div className="experience-tags">
-                <span>React</span>
-                <span>D3.js</span>
-                <span>CNN</span>
-                <span>Transformers</span>
-                <span>Hugging Face</span>
-              </div>
+.projects h2,.pub-section h2 {font-family: var(--serif);font-size: clamp(28px, 3.5vw, 42px);letter-spacing: -1px;line-height: 1.1;color: var(--ink);}
 
-            </div>
+.section-label {font-size: 11px;font-weight: 500;letter-spacing: 0.1em;text-transform: uppercase;color: var(--accent);margin-bottom: 0.75rem;display: flex;align-items: center;gap: 8px;}.section-label::before {content: '';width: 20px;height: 1px;background: var(--accent);}
 
-          </div>
+.btn-secondary {display: inline-flex;align-items: center;gap: 8px;padding: 10px 18px;background: transparent;color: var(--ink);border-radius: 100px;font-size: 13px;font-weight: 500;border: 1px solid var(--border);transition: background 0.2s, border-color 0.2s;white-space: nowrap;text-decoration: none;}.btn-secondary {background: var(--surface-2);border-color: #c5c3bb;color: var(--ink);}
 
-          <div className="experience-item">
+/* grid */.projects-grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));gap: 20px;max-width: 1100px;margin: 0 auto;}
 
-            <div className="experience-left">
-              <div className="experience-dot"></div>
-            </div>
+/* card */.project-card {background: var(--surface);border: 1px solid var(--border);border-radius: 16px;padding: 28px;display: flex;flex-direction: column;gap: 14px;transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;position: relative;overflow: hidden;}
 
-            <div className="experience-card">
+.project-card::before {content: '';position: absolute;top: 0; left: 0; right: 0;height: 3px;background: linear-gradient(90deg, var(--accent), var(--accent-2));opacity: 0;transition: opacity 0.25s;}
 
-              <div className="experience-header">
+.project-card {transform: translateY(-4px);box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);border-color: #d0cfc8;}.project-card:hover::before { opacity: 1; }
 
-                <div>
-                  <h3>Artificial Intelligence Intern</h3>
-                  <h4>AIMER Society</h4>
-                </div>
+.project-icon {width: 44px;height: 44px;border-radius: 10px;background: var(--surface-3);display: flex;align-items: center;justify-content: center;font-size: 20px;}
 
-                <span className="experience-date">
-                  Jun 2024 – Aug 2024
-                </span>
+.project-title {font-family: var(--serif);font-size: 19px;color: var(--ink);letter-spacing: -0.3px;font-weight: 400;}
 
-              </div>
+.project-desc {font-size: 14px;color: var(--ink-muted);line-height: 1.7;flex: 1;}
 
-              <p>
-                Worked on CNNs, YOLO, NLP pipelines and modern Large Language
-                Models including GPT, Claude and Llama for real-world AI
-                applications.
-              </p>
+.project-tags {display: flex;flex-wrap: wrap;gap: 6px;}
 
-              <div className="experience-tags">
-                <span>YOLO</span>
-                <span>NLP</span>
-                <span>GPT</span>
-                <span>Claude</span>
-                <span>Llama</span>
-              </div>
+.project-tag {font-size: 11px;font-weight: 500;padding: 3px 10px;border-radius: 100px;background: var(--accent-light);color: var(--accent);}
 
-            </div>
+.project-links {display: flex;gap: 10px;padding-top: 14px;border-top: 1px solid var(--border);}
 
-          </div>
+.link-btn {display: inline-flex;align-items: center;gap: 6px;font-size: 12px;font-weight: 500;padding: 7px 14px;border-radius: 100px;text-decoration: none;transition: background 0.2s, opacity 0.2s;}
 
-          <div className="experience-item">
+.link-btn-gh {background: var(--surface-2);color: var(--ink);border: 1px solid var(--border);}.link-btn-gh { background: var(--surface-3); color: var(--ink); }
 
-            <div className="experience-left">
-              <div className="experience-dot"></div>
-            </div>
+.link-btn-live {background: var(--ink);color: #fff;}.link-btn-live { opacity: 0.82; color: #fff; }
 
-            <div className="experience-card">
+/* publication */.pub-section {max-width: 1100px;margin: 0 auto;}
 
-              <div className="experience-header">
+.pub-card {background: var(--surface-2);border: 1px solid var(--border);border-radius: 16px;padding: 28px 32px;display: flex;flex-direction: column;gap: 18px;}
 
-                <div>
-                  <h3>Machine Learning Intern</h3>
-                  <h4>SkillDzire</h4>
-                </div>
+.pub-header {display: flex;justify-content: space-between;align-items: flex-start;gap: 16px;flex-wrap: wrap;}
 
-                <span className="experience-date">
-                  Apr 2024 – May 2024
-                </span>
+.pub-title {font-size: 16px;font-weight: 500;color: var(--ink);line-height: 1.5;flex: 1;}
 
-              </div>
+.pub-date {font-size: 12px;color: var(--ink-light);padding: 4px 12px;border-radius: 100px;background: var(--surface-3);border: 1px solid var(--border);white-space: nowrap;}
 
-              <p>
-                Developed forecasting models using ARIMA, Prophet, LSTM,
-                XGBoost, LightGBM and SHAP Explainability.
-              </p>
+.pub-bullets {list-style: none;display: flex;flex-direction: column;gap: 8px;}
 
-              <div className="experience-tags">
-                <span>LSTM</span>
-                <span>XGBoost</span>
-                <span>Prophet</span>
-                <span>SHAP</span>
-              </div>
+.pub-bullets li {font-size: 14px;color: var(--ink-muted);line-height: 1.6;padding-left: 16px;position: relative;}
 
-            </div>
+.pub-bullets li::before {content: '–';position: absolute;left: 0;color: var(--ink-light);}
 
-          </div>
+.pub-footer {padding-top: 4px;}
 
-          <div className="experience-item">
+/* reveal */.reveal {opacity: 0;transform: translateY(24px);transition: opacity 0.65s ease, transform 0.65s ease;}.reveal.visible {opacity: 1;transform: translateY(0);}
 
-            <div className="experience-left">
-              <div className="experience-dot"></div>
-            </div>
+@media (max-width: 768px) {.projects-header { flex-direction: column; align-items: flex-start; gap: 1rem; }}.contact {padding: 100px 5vw;background: #0f1117;color: #fff;}
 
-            <div className="experience-card">
+.contact-layout {display: grid;grid-template-columns: 1fr 1fr;gap: 5vw;align-items: start;max-width: 1100px;margin: 0 auto;}
 
-              <div className="experience-header">
+.reveal {opacity: 0;transform: translateY(24px);transition: opacity 0.65s ease, transform 0.65s ease;}.reveal.visible {opacity: 1;transform: translateY(0);}
 
-                <div>
-                  <h3>Web Development Intern</h3>
-                  <h4>Techno Hacks EduTech</h4>
-                </div>
+.section-label-dark {font-size: 11px;font-weight: 500;letter-spacing: 0.1em;text-transform: uppercase;color: #60a5fa;margin-bottom: 0.75rem;display: flex;align-items: center;gap: 8px;}.section-label-dark::before {content: '';width: 20px;height: 1px;background: #60a5fa;}
 
-                <span className="experience-date">
-                  Sep 2023 – Oct 2023
-                </span>
+.contact h2 {font-family: var(--serif);font-size: clamp(28px, 3.5vw, 42px);letter-spacing: -1px;line-height: 1.1;color: #fff;margin-bottom: 1rem;}
 
-              </div>
+.contact-text p {font-size: 15px;color: #9ca3af;line-height: 1.8;margin-bottom: 2rem;}
 
-              <p>
-                Built responsive web applications including calculators,
-                currency converters and interactive JavaScript projects using
-                HTML, CSS and JavaScript.
-              </p>
+.contact-links {display: flex;flex-direction: column;gap: 10px;}
 
-              <div className="experience-tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-              </div>
+.contact-link {display: flex;align-items: center;gap: 14px;padding: 14px 18px;background: rgba(255,255,255,0.05);border: 1px solid rgba(255,255,255,0.09);border-radius: var(--radius);color: #fff;font-size: 14px;text-decoration: none;transition: background 0.2s, border-color 0.2s;}.contact-link {background: rgba(255,255,255,0.09);border-color: rgba(255,255,255,0.18);color: #fff;}
 
-            </div>
+.contact-link-icon {width: 34px;height: 34px;border-radius: 8px;background: rgba(255,255,255,0.1);display: flex;align-items: center;justify-content: center;font-size: 14px;flex-shrink: 0;color: #fff;}
 
-          </div>
+.contact-link-sublabel {font-size: 11px;color: #6b7280;margin-top: 2px;}
 
-        </div>
+/* Form */.contact-form-side {display: flex;flex-direction: column;gap: 14px;}
 
-      </div>
+.contact-form-side form {display: flex;flex-direction: column;gap: 14px;}
 
-      {/* EDUCATION */}
+.form-row {display: grid;grid-template-columns: 1fr 1fr;gap: 14px;}
 
-      <div className="about-block reveal" ref={eduRef}>
+.form-group {display: flex;flex-direction: column;gap: 6px;}
 
-        <p className="section-label">Education</p>
+.form-group label {font-size: 12px;color: #9ca3af;letter-spacing: 0.04em;}
 
-        <div className="experience-timeline">
+.form-group input,.form-group textarea {background: rgba(255,255,255,0.06);border: 1px solid rgba(255,255,255,0.12);border-radius: 8px;padding: 11px 14px;font-size: 14px;color: #fff;transition: border-color 0.2s;resize: none;}.form-group input::placeholder,.form-group textarea::placeholder { color: #4b5563; }.form-group input,.form-group textarea { border-color: rgba(96,165,250,0.5); }
 
-          <div className="experience-item">
+.btn-send {align-self: flex-start;display: inline-flex;align-items: center;gap: 8px;padding: 13px 26px;background: #fff;color: #0f1117;border-radius: 100px;font-size: 14px;font-weight: 500;transition: opacity 0.2s;cursor: pointer;border: none;font-family: var(--sans);}.btn-send { opacity: 0.88; }
 
-            <div className="experience-left">
-              <div className="experience-dot"></div>
-            </div>
+.form-success {display: flex;flex-direction: column;align-items: flex-start;gap: 10px;padding: 32px;background: rgba(14,159,110,0.1);border: 1px solid rgba(14,159,110,0.3);border-radius: var(--radius);}
 
-            <div className="experience-card">
+.form-success-icon {width: 40px;height: 40px;background: rgba(14,159,110,0.2);border-radius: 50%;display: flex;align-items: center;justify-content: center;font-size: 18px;color: #34d399;}
 
-              <div className="experience-header">
+.form-success h3 {font-family: var(--serif);font-size: 22px;font-weight: 400;color: #fff;}
 
-                <div>
-                  <h3>Master's in Applied Computer Science</h3>
-                  <h4>Georg-August-Universität Göttingen</h4>
-                </div>
+.form-success p {font-size: 14px;color: #9ca3af;margin: 0;}
 
-                <span className="experience-date">
-                  2025 – Present
-                </span>
+@media (max-width: 768px) {.contact-layout { grid-template-columns: 1fr; }.form-row { grid-template-columns: 1fr; }}.footer {background: #0f1117;border-top: 1px solid rgba(255, 255, 255, 0.06);padding: 22px 5vw;display: flex;justify-content: space-between;align-items: center;font-size: 13px;color: #4b5563;}
 
-              </div>
-
-              <p>
-                Specializing in Artificial Intelligence, Large Language Models,
-                Computer Vision, Retrieval-Augmented Generation, Distributed
-                Systems and Full-Stack AI Development.
-              </p>
-
-              <div className="experience-tags">
-                <span>AI</span>
-                <span>LLMs</span>
-                <span>Computer Vision</span>
-                <span>RAG</span>
-                <span>Research</span>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div className="experience-item">
-
-            <div className="experience-left">
-              <div className="experience-dot"></div>
-            </div>
-
-            <div className="experience-card">
-
-              <div className="experience-header">
-
-                <div>
-                  <h3>Bachelor's in Computer Science</h3>
-                  <h4>R.V.R & J.C College of Engineering</h4>
-                </div>
-
-                <span className="experience-date">
-                  2021 – 2025
-                </span>
-
-              </div>
-
-              <p>
-                Graduated with a GPA of 9.11/10 while building a strong
-                foundation in algorithms, software engineering, machine
-                learning, artificial intelligence and full-stack development.
-              </p>
-
-              <div className="experience-tags">
-                <span>GPA 9.11</span>
-                <span>Machine Learning</span>
-                <span>Algorithms</span>
-                <span>Software Engineering</span>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-            {/* SKILLS */}
-
-      <div className="about-block reveal" ref={skillRef}>
-
-        <p className="section-label">Skills</p>
-
-        <div className="skills-section">
-
-          {skillGroups.map((group) => (
-
-            <div key={group.label} className="skill-group">
-
-              <div className="skill-group-label">
-                {group.label}
-              </div>
-
-              <div className="skill-tags">
-
-                {group.items.map((skill) => (
-
-                  <span key={skill} className="skill-tag">
-                    {skill}
-                  </span>
-
-                ))}
-
-              </div>
-
-            </div>
-
-          ))}
-
-        </div>
-
-      </div>
-
-      {/* CERTIFICATIONS & LANGUAGES */}
-
-      <div className="about-bottom reveal" ref={certRef}>
-
-        <div className="about-block-half">
-
-          <p className="section-label">Certifications</p>
-
-          <ul className="cert-list">
-
-            {certifications.map((cert) => (
-
-              <li key={cert} className="cert-item">
-
-                <span className="cert-dot"></span>
-
-                {cert}
-
-              </li>
-
-            ))}
-
-          </ul>
-
-        </div>
-
-        <div className="about-block-half">
-
-          <p className="section-label">Languages</p>
-
-          <div className="lang-grid">
-
-            {languages.map((language) => (
-
-              <div key={language.lang} className="lang-card">
-
-                <div className="lang-name">
-                  {language.lang}
-                </div>
-
-                <div className="lang-level">
-                  {language.level}
-                </div>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-  );
-}
-
-export default About;
+@media (max-width: 500px) {.footer { flex-direction: column; gap: 6px; text-align: center; }}
