@@ -498,6 +498,27 @@ input, textarea {
   line-height: 1.8;
   max-width: 640px;
 }
+.about-intro {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-intro .section-label {
+  display: block;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.about-intro .section-label::before {
+  display: none;
+}
+
+.about-intro .about-lead {
+  margin: 0 auto;
+  max-width: 750px;
+}
 
 .about-block {
   display: flex;
@@ -506,65 +527,130 @@ input, textarea {
 }
 
 /* experience */
-.exp-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 24px 28px;
+/* ---------- Experience Timeline ---------- */
+
+.experience-timeline {
+  position: relative;
+  margin-top: 30px;
 }
 
-.exp-header {
+.experience-timeline::before {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+
+.experience-item {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 35px;
+}
+
+.experience-left {
+  width: 36px;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.experience-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 4px solid white;
+  box-shadow: 0 0 0 2px var(--accent-light);
+  margin-top: 20px;
+  z-index: 2;
+}
+
+.experience-card {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all .3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,.08);
+  border-color: var(--accent);
+}
+
+.experience-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 16px;
-  gap: 16px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
-.exp-role {
-  font-size: 16px;
-  font-weight: 500;
+.experience-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
   color: var(--ink);
-  margin-bottom: 3px;
 }
 
-.exp-company {
-  font-size: 14px;
+.experience-header h4 {
+  font-size: 15px;
   color: var(--accent);
   font-weight: 500;
 }
 
-.exp-date {
-  font-size: 12px;
-  color: var(--ink-light);
-  white-space: nowrap;
-  padding: 4px 12px;
-  border-radius: 100px;
-  background: var(--surface-3);
-  border: 1px solid var(--border);
+.experience-date {
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
 }
 
-.exp-bullets {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.exp-bullets li {
-  font-size: 14px;
+.experience-card p {
+  margin: 18px 0;
+  line-height: 1.8;
   color: var(--ink-muted);
-  line-height: 1.6;
-  padding-left: 16px;
-  position: relative;
 }
 
-.exp-bullets li::before {
-  content: '–';
-  position: absolute;
-  left: 0;
-  color: var(--ink-light);
+.experience-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.experience-tags span {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: .3s;
+}
+
+.experience-tags span:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+@media (max-width:768px){
+
+  .experience-header{
+    flex-direction:column;
+  }
+
+  .experience-timeline::before{
+    left:16px;
+  }
+
 }
 
 /* education */

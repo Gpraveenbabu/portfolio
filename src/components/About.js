@@ -60,32 +60,148 @@ function About() {
 
       <div className="reveal" ref={introRef}>
         <p className="section-label">About me</p>
-        <h2>Engineer at the intersection of AI &amp; web.</h2>
+        <h2>About Me</h2>
         <p className="about-lead">
-          I'm a Master's student in Applied Computer Science at the University of Göttingen,
-          with a strong focus on Artificial Intelligence and emerging technologies. I build
-          scalable, real-world applications that bridge cutting-edge ML research with
-          production-ready software.
+
+I'm a Master's student in Applied
+Computer Science at the University of Göttingen,
+focusing mainly in Large Language Models, Computer Vision,
+Retrieval-Augmented Generation, and full-stack AI systems.
+
+I enjoy building intelligent software that transforms
+research ideas into scalable, production-ready applications.
         </p>
       </div>
 
       <div className="about-block reveal" ref={expRef}>
-        <p className="section-label">Experience</p>
-        <div className="exp-card">
-          <div className="exp-header">
-            <div>
-              <div className="exp-role">Artificial Intelligence Intern</div>
-              <div className="exp-company">AIMER Society</div>
-            </div>
-            <span className="exp-date">Dec 2024 – Apr 2025</span>
+  <p className="section-label">Experience</p>
+
+  <div className="experience-timeline">
+
+    <div className="experience-item">
+      <div className="experience-left">
+        <div className="experience-dot"></div>
+      </div>
+
+      <div className="experience-card">
+        <div className="experience-header">
+          <div>
+            <h3>Full Stack, AI/ML & Cyber Security Intern</h3>
+            <h4>AIMER Society</h4>
           </div>
-          <ul className="exp-bullets">
-            <li>Developed and deployed AI models for image classification and object detection</li>
-            <li>Worked with Hugging Face and generative AI models in modern AI frameworks</li>
-            <li>Executed end-to-end ML workflows: data preprocessing, model training, and evaluation</li>
-          </ul>
+
+          <span className="experience-date">Dec 2024 – Apr 2025</span>
+        </div>
+
+        <p>
+          Built an interactive cryptography visualization platform using React,
+          D3.js and Konva.js. Developed CNN and Hugging Face Transformer models
+          for image classification and object detection while managing the
+          complete machine learning workflow.
+        </p>
+
+        <div className="experience-tags">
+          <span>React</span>
+          <span>D3.js</span>
+          <span>CNN</span>
+          <span>Hugging Face</span>
+          <span>Object Detection</span>
         </div>
       </div>
+    </div>
+
+    <div className="experience-item">
+      <div className="experience-left">
+        <div className="experience-dot"></div>
+      </div>
+
+      <div className="experience-card">
+        <div className="experience-header">
+          <div>
+            <h3>Artificial Intelligence Intern</h3>
+            <h4>AIMER Society</h4>
+          </div>
+
+          <span className="experience-date">Jun 2024 – Aug 2024</span>
+        </div>
+
+        <p>
+          Worked on CNNs, YOLO, medical image analysis, NLP pipelines,
+          GPT, Claude and Llama models for real-world AI applications.
+        </p>
+
+        <div className="experience-tags">
+          <span>YOLO</span>
+          <span>NLP</span>
+          <span>GPT</span>
+          <span>Claude</span>
+          <span>Llama</span>
+        </div>
+      </div>
+    </div>
+
+    <div className="experience-item">
+      <div className="experience-left">
+        <div className="experience-dot"></div>
+      </div>
+
+      <div className="experience-card">
+        <div className="experience-header">
+          <div>
+            <h3>Machine Learning Intern</h3>
+            <h4>SkillDzire</h4>
+          </div>
+
+          <span className="experience-date">Apr 2024 – May 2024</span>
+        </div>
+
+        <p>
+          Built forecasting models using ARIMA, LSTM and Prophet while
+          developing XGBoost, LightGBM and CatBoost models with SHAP
+          explainability.
+        </p>
+
+        <div className="experience-tags">
+          <span>LSTM</span>
+          <span>Prophet</span>
+          <span>XGBoost</span>
+          <span>LightGBM</span>
+          <span>SHAP</span>
+        </div>
+      </div>
+    </div>
+
+    <div className="experience-item">
+      <div className="experience-left">
+        <div className="experience-dot"></div>
+      </div>
+
+      <div className="experience-card">
+        <div className="experience-header">
+          <div>
+            <h3>Web Development Intern</h3>
+            <h4>Techno Hacks EduTech</h4>
+          </div>
+
+          <span className="experience-date">Sep 2023 – Oct 2023</span>
+        </div>
+
+        <p>
+          Developed responsive web applications including calculators,
+          currency converters and countdown timers using HTML, CSS and
+          JavaScript.
+        </p>
+
+        <div className="experience-tags">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
       <div className="about-block reveal" ref={eduRef}>
         <p className="section-label">Education</p>
