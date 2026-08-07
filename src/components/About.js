@@ -63,25 +63,26 @@ function About() {
 
       {/* ABOUT */}
 
-        <div className="section-heading">
-    <h2>About Me</h2>
-</div>
+         <div className="reveal about-intro" ref={introRef}>
 
-        <h2>About Me</h2>
+    <div className="section-heading">
+      <h2>About Me</h2>
+    </div>
 
-        <p className="about-lead">
-          I'm a Master's student in Applied Computer Science at
-          Georg-August-Universität Göttingen with a strong passion for
-          Artificial Intelligence, Large Language Models, Computer Vision,
-          Retrieval-Augmented Generation (RAG), and Full-Stack AI Systems.
+    <p className="about-lead">
+      I'm a Master's student in Applied Computer Science at
+      Georg-August-Universität Göttingen with a strong passion for
+      Artificial Intelligence, Large Language Models, Computer Vision,
+      Retrieval-Augmented Generation (RAG), and Full-Stack AI Systems.
 
-          <br /><br />
+      <br /><br />
 
-          I enjoy transforming research ideas into scalable, real-world
-          applications and continuously learning new technologies that solve
-          meaningful problems.
-        </p>
-      </div>
+      I enjoy transforming research ideas into scalable, real-world
+      applications and continuously learning new technologies that solve
+      meaningful problems.
+    </p>
+
+  </div>
 
       {/* EXPERIENCE */}
 
@@ -345,7 +346,7 @@ function About() {
       <div className="about-block reveal" ref={skillRef}>
 
         <div className="section-heading">
-    <h2>Sills</h2>
+    <h2>Skills</h2>
 </div>
 
         <div className="skills-section">
