@@ -62,10 +62,14 @@ function About() {
         <p className="section-label">About me</p>
         <h2>About Me</h2>
         <p className="about-lead">
-          I'm a Master's student in Applied Computer Science at the University of Göttingen,
-          with a strong focus on Artificial Intelligence and emerging technologies. I build
-          scalable, real-world applications that bridge cutting-edge ML research with
-          production-ready software.
+
+I'm a Master's student in Applied
+Computer Science at the University of Göttingen,
+focusing mainly in Large Language Models, Computer Vision,
+Retrieval-Augmented Generation, and full-stack AI systems.
+
+I enjoy building intelligent software that transforms
+research ideas into scalable, production-ready applications.
         </p>
       </div>
 
