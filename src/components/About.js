@@ -9,10 +9,6 @@ const skillGroups = [
   { label: 'Cloud',       items: ['Vercel', 'AWS (basics)'] },
 ];
 
-const education = [
-  { school: 'Georg-August-Universität Göttingen', degree: "Master's in Applied Computer Science", detail: 'Currently enrolled' },
-  { school: 'R.V.R & J.C College of Engineering', degree: "Bachelor's in Computer Science", detail: 'GPA: 9.11 / 10' },
-];
 
 const certifications = [
   'Google Data Analytics Specialization — Coursera',
