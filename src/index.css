@@ -717,22 +717,21 @@ input, textarea {
   gap: 12px;
 }
 
-.skill-tag {
-  padding: 10px 18px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--ink);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  transition: all 0.3s ease;
+.skill-tag{
+    padding:10px 18px;
+    font-size:15px;
+    font-weight:500;
+    color:#444;
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:999px;
+    transition:.3s;
 }
 
-.skill-tag:hover {
-  background: var(--accent);
-  color: white;
-  border-color: var(--accent);
-  transform: translateY(-2px);
+.skill-tag:hover{
+    background:#2563eb;
+    color:white;
+    border-color:#2563eb;
 }
 
 /* bottom row */
