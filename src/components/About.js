@@ -203,56 +203,80 @@ research ideas into scalable, production-ready applications.
   </div>
 </div>
 
-      <div className="about-block reveal" ref={eduRef}>
-        <p className="section-label">Education</p>
-        <div className="edu-list">
-          {education.map((e) => (
-            <div key={e.school} className="edu-card">
-              <div className="edu-school">{e.school}</div>
-              <div className="edu-degree">{e.degree}</div>
-              <div className="edu-detail">{e.detail}</div>
-            </div>
-          ))}
-        </div>
+     <div className="about-block reveal" ref={eduRef}>
+  <p className="section-label">Education</p>
+
+  <div className="experience-timeline">
+
+    <div className="experience-item">
+      <div className="experience-left">
+        <div className="experience-dot"></div>
       </div>
 
-      <div className="about-block reveal" ref={skillRef}>
-        <p className="section-label">Skills</p>
-        <div className="skills-section">
-          {skillGroups.map((g) => (
-            <div key={g.label} className="skill-group">
-              <div className="skill-group-label">{g.label}</div>
-              <div className="skill-tags">
-                {g.items.map((s) => <span key={s} className="skill-tag">{s}</span>)}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="about-bottom reveal" ref={certRef}>
-        <div className="about-block-half">
-          <p className="section-label">Certifications</p>
-          <ul className="cert-list">
-            {certifications.map((c) => (
-              <li key={c} className="cert-item">
-                <span className="cert-dot"></span>{c}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="about-block-half">
-          <p className="section-label">Languages</p>
-          <div className="lang-grid">
-            {languages.map((l) => (
-              <div key={l.lang} className="lang-card">
-                <div className="lang-name">{l.lang}</div>
-                <div className="lang-level">{l.level}</div>
-              </div>
-            ))}
+      <div className="experience-card">
+        <div className="experience-header">
+          <div>
+            <h3>Master's in Applied Computer Science</h3>
+            <h4>Georg-August-Universität Göttingen</h4>
           </div>
+
+          <span className="experience-date">
+            Oct 2025 – Present
+          </span>
+        </div>
+
+        <p>
+          Specializing in Artificial Intelligence, Large Language Models,
+          Computer Vision, Retrieval-Augmented Generation (RAG),
+          Distributed Systems and Full-Stack AI Development.
+        </p>
+
+        <div className="experience-tags">
+          <span>Artificial Intelligence</span>
+          <span>LLMs</span>
+          <span>Computer Vision</span>
+          <span>RAG</span>
+          <span>Research</span>
         </div>
       </div>
+    </div>
+
+    <div className="experience-item">
+      <div className="experience-left">
+        <div className="experience-dot"></div>
+      </div>
+
+      <div className="experience-card">
+        <div className="experience-header">
+          <div>
+            <h3>Bachelor's in Computer Science</h3>
+            <h4>R.V.R & J.C College of Engineering</h4>
+          </div>
+
+          <span className="experience-date">
+            2021 – 2025
+          </span>
+        </div>
+
+        <p>
+          Graduated with a GPA of <strong>9.11 / 10</strong>. Built a strong
+          foundation in algorithms, software engineering, machine learning,
+          artificial intelligence, databases, and web development.
+        </p>
+
+        <div className="experience-tags">
+          <span>GPA 9.11</span>
+          <span>Machine Learning</span>
+          <span>Web Development</span>
+          <span>Algorithms</span>
+          <span>Software Engineering</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+      
 
     </section>
   );
