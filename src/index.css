@@ -1,1284 +1,429 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --ink: #0f1117;
-  --ink-muted: #6b7280;
-  --ink-light: #9ca3af;
-  --surface: #ffffff;
-  --surface-2: #f8f8f6;
-  --surface-3: #f0efe9;
-  --accent: #1a56db;
-  --accent-light: #dbeafe;
-  --accent-2: #0e9f6e;
-  --border: #e5e4de;
-  --radius: 12px;
-  --serif: 'DM Serif Display', Georgia, serif;
-  --sans: 'DM Sans', system-ui, sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--sans);
-  background: var(--surface);
-  color: var(--ink);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-button {
-  font-family: var(--sans);
-  cursor: pointer;
-  border: none;
-  outline: none;
-}
-
-input, textarea {
-  font-family: var(--sans);
-  outline: none;
-}
-.home {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 120px 5vw 80px;
-  background: var(--surface);
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-grid-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: 0.5;
-  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
-}
-
-.hero-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 860px;
-  animation: heroFadeUp 0.6s ease both;
-}
+import React, { useEffect, useRef } from "react";
+
+const skillGroups = [
+  { label: "Languages", items: ["Python", "JavaScript", "TypeScript", "Java", "C"] },
+  { label: "Frameworks", items: ["React", "Node.js", "FastAPI", "LangChain"] },
+  { label: "AI / ML", items: ["Deep Learning", "CNN", "NLP", "Generative AI", "RAG Systems"] },
+  { label: "Tools", items: ["Docker", "Git", "PostgreSQL", "REST APIs"] },
+  { label: "Data Science", items: ["Pandas", "NumPy", "Scikit-learn", "TensorFlow", "PyTorch"] },
+  { label: "Cloud", items: ["Vercel", "AWS (Basics)"] },
+];
 
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-light);
-  padding: 5px 14px;
-  border-radius: 100px;
-  margin-bottom: 1.5rem;
-}
+const certifications = [
+  "Google Data Analytics Professional Certificate",
+  "Front-End Development – freeCodeCamp",
+  "Advanced Python Programming – NPTEL",
+  "Generative AI & LLMs – LinkedIn Learning",
+];
+
+const languages = [
+  { lang: "English", level: "Professional" },
+  { lang: "German", level: "B1 (Learning)" },
+  { lang: "Hindi", level: "Professional" },
+  { lang: "Telugu", level: "Native" },
+];
+
+function useReveal(ref, delay = 0) {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            ref.current?.classList.add("visible");
+          }, delay);
+        }
+      },
+      { threshold: 0.15 }
+    );
 
-.hero-tag-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  display: inline-block;
-}
+    if (ref.current) observer.observe(ref.current);
 
-.hero-title {
-  font-family: var(--serif);
-  font-size: clamp(48px, 7vw, 88px);
-  line-height: 1.05;
-  letter-spacing: -2px;
-  color: var(--ink);
-  margin-bottom: 1.25rem;
+    return () => observer.disconnect();
+  }, [ref, delay]);
 }
 
-.hero-title em {
-  font-style: italic;
-  color: var(--ink-muted);
-}
+function About() {
+  const introRef = useRef(null);
+  const expRef = useRef(null);
+  const eduRef = useRef(null);
+  const skillRef = useRef(null);
+  const certRef = useRef(null);
 
-.hero-sub {
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--ink-muted);
-  max-width: 520px;
-  margin-bottom: 2.5rem;
-  line-height: 1.7;
-}
+  useReveal(introRef);
+  useReveal(expRef, 100);
+  useReveal(eduRef, 200);
+  useReveal(skillRef, 300);
+  useReveal(certRef, 400);
 
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 0;
-}
+  return (
+    <section id="about" className="about">
 
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 24px;
-  background: var(--ink);
-  color: #fff;
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-}
+      {/* ABOUT */}
+
+      <div className="reveal about-intro" ref={introRef}>
+        <p className="section-label">About Me</p>
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
-  color: #fff;
-}
+        <h2>About Me</h2>
 
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 24px;
-  background: transparent;
-  color: var(--ink);
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  border: 1px solid var(--border);
-  transition: background 0.2s, border-color 0.2s;
-}
+        <p className="about-lead">
+          I'm a Master's student in Applied Computer Science at
+          Georg-August-Universität Göttingen with a strong passion for
+          Artificial Intelligence, Large Language Models, Computer Vision,
+          Retrieval-Augmented Generation (RAG), and Full-Stack AI Systems.
 
-.btn-secondary:hover {
-  background: var(--surface-2);
-  border-color: #c5c3bb;
-  color: var(--ink);
-}
+          <br /><br />
 
-.hero-stats {
-  display: flex;
-  gap: 2.5rem;
-  margin-top: 4rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid var(--border);
-  flex-wrap: wrap;
-}
+          I enjoy transforming research ideas into scalable, real-world
+          applications and continuously learning new technologies that solve
+          meaningful problems.
+        </p>
+      </div>
 
-.stat-num {
-  font-family: var(--serif);
-  font-size: 32px;
-  color: var(--ink);
-  display: block;
-  line-height: 1;
-  margin-bottom: 4px;
-}
+      {/* EXPERIENCE */}
 
-.stat-label {
-  font-size: 13px;
-  color: var(--ink-muted);
-}
+      <div className="about-block reveal" ref={expRef}>
 
-@keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+        <p className="section-label">Experience</p>
 
-@media (max-width: 600px) {
-  .hero-stats { gap: 1.5rem; }
-  .hero-title { letter-spacing: -1px; }
-}
-.footer {
-  background: #0f1117;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 22px 5vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-  color: #4b5563;
-}
+        <div className="experience-timeline">
 
-@media (max-width: 500px) {
-  .footer { flex-direction: column; gap: 6px; text-align: center; }
-}
-/* App-level resets — all styles live in component CSS files */
-.App {
-  overflow-x: hidden;
-}
-.navbar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 5vw;
-  height: 64px;
-  background: rgba(255,255,255,0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s, background 0.3s;
-}
+          <div className="experience-item">
 
-.navbar--scrolled {
-  background: rgba(255,255,255,0.92);
-  border-bottom-color: var(--border);
-}
+            <div className="experience-left">
+              <div className="experience-dot"></div>
+            </div>
 
-.nav-logo {
-  font-family: var(--serif);
-  font-size: 20px;
-  color: var(--ink);
-  letter-spacing: -0.3px;
-  text-decoration: none;
-}
+            <div className="experience-card">
 
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  align-items: center;
-}
+              <div className="experience-header">
 
-.nav-links a {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--ink-muted);
-  letter-spacing: 0.01em;
-  transition: color 0.2s;
-  text-decoration: none;
-}
-.nav-links a:hover { color: var(--ink); }
-
-.nav-cta {
-  font-size: 13px !important;
-  font-weight: 500 !important;
-  padding: 8px 18px;
-  background: var(--ink);
-  color: #fff !important;
-  border-radius: 100px;
-  transition: opacity 0.2s !important;
-}
-.nav-cta:hover { opacity: 0.8; color: #fff !important; }
-.home {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 120px 5vw 80px;
-  background: var(--surface);
-  position: relative;
-  overflow: hidden;
-}
+                <div>
+                  <h3>Full Stack, AI/ML & Cyber Security Intern</h3>
+                  <h4>AIMER Society</h4>
+                </div>
 
-.hero-grid-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: 0.5;
-  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
-}
+                <span className="experience-date">
+                  Dec 2024 – Apr 2025
+                </span>
 
-.hero-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 860px;
-  animation: heroFadeUp 0.6s ease both;
-}
+              </div>
 
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-light);
-  padding: 5px 14px;
-  border-radius: 100px;
-  margin-bottom: 1.5rem;
-}
+              <p>
+                Built interactive cryptography visualization software using
+                React, D3.js and Konva.js while developing CNN and Hugging Face
+                Transformer models for image classification and object
+                detection.
+              </p>
 
-.hero-tag-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  display: inline-block;
-}
+              <div className="experience-tags">
+                <span>React</span>
+                <span>D3.js</span>
+                <span>CNN</span>
+                <span>Transformers</span>
+                <span>Hugging Face</span>
+              </div>
 
-.hero-title {
-  font-family: var(--serif);
-  font-size: clamp(48px, 7vw, 88px);
-  line-height: 1.05;
-  letter-spacing: -2px;
-  color: var(--ink);
-  margin-bottom: 1.25rem;
-}
+            </div>
 
-.hero-title em {
-  font-style: italic;
-  color: var(--ink-muted);
-}
+          </div>
 
-.hero-sub {
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--ink-muted);
-  max-width: 520px;
-  margin-bottom: 2.5rem;
-  line-height: 1.7;
-}
+          <div className="experience-item">
 
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 0;
-}
+            <div className="experience-left">
+              <div className="experience-dot"></div>
+            </div>
 
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 24px;
-  background: var(--ink);
-  color: #fff;
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-}
+            <div className="experience-card">
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
-  color: #fff;
-}
+              <div className="experience-header">
 
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 24px;
-  background: transparent;
-  color: var(--ink);
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  border: 1px solid var(--border);
-  transition: background 0.2s, border-color 0.2s;
-}
+                <div>
+                  <h3>Artificial Intelligence Intern</h3>
+                  <h4>AIMER Society</h4>
+                </div>
 
-.btn-secondary:hover {
-  background: var(--surface-2);
-  border-color: #c5c3bb;
-  color: var(--ink);
-}
+                <span className="experience-date">
+                  Jun 2024 – Aug 2024
+                </span>
 
-.hero-stats {
-  display: flex;
-  gap: 2.5rem;
-  margin-top: 4rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid var(--border);
-  flex-wrap: wrap;
-}
+              </div>
 
-.stat-num {
-  font-family: var(--serif);
-  font-size: 32px;
-  color: var(--ink);
-  display: block;
-  line-height: 1;
-  margin-bottom: 4px;
-}
+              <p>
+                Worked on CNNs, YOLO, NLP pipelines and modern Large Language
+                Models including GPT, Claude and Llama for real-world AI
+                applications.
+              </p>
 
-.stat-label {
-  font-size: 13px;
-  color: var(--ink-muted);
-}
+              <div className="experience-tags">
+                <span>YOLO</span>
+                <span>NLP</span>
+                <span>GPT</span>
+                <span>Claude</span>
+                <span>Llama</span>
+              </div>
 
-@keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+            </div>
 
-@media (max-width: 600px) {
-  .hero-stats { gap: 1.5rem; }
-  .hero-title { letter-spacing: -1px; }
-}
-.about {
-  padding: 100px 5vw;
-  background: var(--surface-2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 64px;
-}
+          </div>
 
-.about > .reveal {
-  max-width: 1100px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
+          <div className="experience-item">
 
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+            <div className="experience-left">
+              <div className="experience-dot"></div>
+            </div>
 
-.section-label {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.section-label::before {
-  content: '';
-  width: 20px;
-  height: 1px;
-  background: var(--accent);
-}
+            <div className="experience-card">
 
-.about-intro h2 {
-  font-family: var(--serif);
-  font-size: clamp(28px, 3.5vw, 42px);
-  letter-spacing: -1px;
-  line-height: 1.1;
-  color: var(--ink);
-  margin-bottom: 1rem;
-}
+              <div className="experience-header">
 
-.about-lead {
-  font-size: 16px;
-  color: var(--ink-muted);
-  line-height: 1.8;
-  max-width: 640px;
-}
-.about-intro {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
+                <div>
+                  <h3>Machine Learning Intern</h3>
+                  <h4>SkillDzire</h4>
+                </div>
 
-.about-intro .section-label {
-  display: block;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 700;
-}
+                <span className="experience-date">
+                  Apr 2024 – May 2024
+                </span>
 
-.about-intro .section-label::before {
-  display: none;
-}
+              </div>
 
-.about-intro .about-lead {
-  margin: 0 auto;
-  max-width: 750px;
-}
+              <p>
+                Developed forecasting models using ARIMA, Prophet, LSTM,
+                XGBoost, LightGBM and SHAP Explainability.
+              </p>
 
-.about-block {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+              <div className="experience-tags">
+                <span>LSTM</span>
+                <span>XGBoost</span>
+                <span>Prophet</span>
+                <span>SHAP</span>
+              </div>
 
-/* experience */
-/* ---------- Experience Timeline ---------- */
+            </div>
 
-.experience-timeline {
-  position: relative;
-  margin-top: 30px;
-}
+          </div>
 
-.experience-timeline::before {
-  content: "";
-  position: absolute;
-  left: 17px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--border);
-}
+          <div className="experience-item">
 
-.experience-item {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 35px;
-}
+            <div className="experience-left">
+              <div className="experience-dot"></div>
+            </div>
 
-.experience-left {
-  width: 36px;
-  display: flex;
-  justify-content: center;
-  flex-shrink: 0;
-}
+            <div className="experience-card">
 
-.experience-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 4px solid white;
-  box-shadow: 0 0 0 2px var(--accent-light);
-  margin-top: 20px;
-  z-index: 2;
-}
+              <div className="experience-header">
 
-.experience-card {
-  flex: 1;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
-  transition: all .3s ease;
-}
+                <div>
+                  <h3>Web Development Intern</h3>
+                  <h4>Techno Hacks EduTech</h4>
+                </div>
 
-.experience-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0,0,0,.08);
-  border-color: var(--accent);
-}
+                <span className="experience-date">
+                  Sep 2023 – Oct 2023
+                </span>
 
-.experience-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  flex-wrap: wrap;
-}
+              </div>
 
-.experience-header h3 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 4px;
-  color: var(--ink);
-}
+              <p>
+                Built responsive web applications including calculators,
+                currency converters and interactive JavaScript projects using
+                HTML, CSS and JavaScript.
+              </p>
 
-.experience-header h4 {
-  font-size: 15px;
-  color: var(--accent);
-  font-weight: 500;
-}
+              <div className="experience-tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
 
-.experience-date {
-  background: var(--accent-light);
-  color: var(--accent);
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
-}
+            </div>
 
-.experience-card p {
-  margin: 18px 0;
-  line-height: 1.8;
-  color: var(--ink-muted);
-}
+          </div>
 
-.experience-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
+        </div>
 
-.experience-tags span {
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 6px 14px;
-  font-size: 12px;
-  font-weight: 500;
-  transition: .3s;
-}
+      </div>
 
-.experience-tags span:hover {
-  background: var(--accent);
-  color: white;
-  border-color: var(--accent);
-}
+      {/* EDUCATION */}
 
-@media (max-width:768px){
+      <div className="about-block reveal" ref={eduRef}>
 
-  .experience-header{
-    flex-direction:column;
-  }
+        <p className="section-label">Education</p>
 
-  .experience-timeline::before{
-    left:16px;
-  }
+        <div className="experience-timeline">
 
-}
+          <div className="experience-item">
 
-/* education */
-.edu-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 14px;
-}
+            <div className="experience-left">
+              <div className="experience-dot"></div>
+            </div>
 
-.edu-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px 22px;
-}
+            <div className="experience-card">
 
-.edu-school {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 4px;
-}
+              <div className="experience-header">
 
-.edu-degree {
-  font-size: 13px;
-  color: var(--ink-muted);
-  margin-bottom: 8px;
-}
+                <div>
+                  <h3>Master's in Applied Computer Science</h3>
+                  <h4>Georg-August-Universität Göttingen</h4>
+                </div>
 
-.edu-detail {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--accent);
-  background: var(--accent-light);
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 100px;
-}
+                <span className="experience-date">
+                  2025 – Present
+                </span>
 
-/* skills */
-.skills-section {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+              </div>
 
-.skill-group {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-}
+              <p>
+                Specializing in Artificial Intelligence, Large Language Models,
+                Computer Vision, Retrieval-Augmented Generation, Distributed
+                Systems and Full-Stack AI Development.
+              </p>
 
-.skill-group-label {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--ink-light);
-  letter-spacing: 0.04em;
-  min-width: 110px;
-  padding-top: 5px;
-  flex-shrink: 0;
-}
+              <div className="experience-tags">
+                <span>AI</span>
+                <span>LLMs</span>
+                <span>Computer Vision</span>
+                <span>RAG</span>
+                <span>Research</span>
+              </div>
 
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
+            </div>
 
-.skill-tag {
-  font-size: 12px;
-  padding: 4px 12px;
-  border-radius: 100px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--ink-muted);
-}
+          </div>
 
-/* bottom row */
-.about-bottom {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: start;
-  max-width: 1100px;
-  margin: 0 auto;
-  width: 100%;
-}
+          <div className="experience-item">
 
-.about-block-half {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+            <div className="experience-left">
+              <div className="experience-dot"></div>
+            </div>
 
-/* certifications */
-.cert-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+            <div className="experience-card">
 
-.cert-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--ink-muted);
-  line-height: 1.5;
-}
+              <div className="experience-header">
 
-.cert-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  flex-shrink: 0;
-  margin-top: 5px;
-}
+                <div>
+                  <h3>Bachelor's in Computer Science</h3>
+                  <h4>R.V.R & J.C College of Engineering</h4>
+                </div>
 
-/* languages */
-.lang-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
+                <span className="experience-date">
+                  2021 – 2025
+                </span>
 
-.lang-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 16px;
-}
+              </div>
 
-.lang-name {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 3px;
-}
+              <p>
+                Graduated with a GPA of 9.11/10 while building a strong
+                foundation in algorithms, software engineering, machine
+                learning, artificial intelligence and full-stack development.
+              </p>
 
-.lang-level {
-  font-size: 12px;
-  color: var(--ink-light);
-}
+              <div className="experience-tags">
+                <span>GPA 9.11</span>
+                <span>Machine Learning</span>
+                <span>Algorithms</span>
+                <span>Software Engineering</span>
+              </div>
 
-@media (max-width: 768px) {
-  .about-bottom { grid-template-columns: 1fr; }
-  .skill-group { flex-direction: column; gap: 8px; }
-  .skill-group-label { min-width: unset; }
-}
-.projects {
-  padding: 100px 5vw;
-  background: var(--surface);
-}
+            </div>
 
-.projects-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 2.5rem;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-}
+          </div>
 
-.projects h2,
-.pub-section h2 {
-  font-family: var(--serif);
-  font-size: clamp(28px, 3.5vw, 42px);
-  letter-spacing: -1px;
-  line-height: 1.1;
-  color: var(--ink);
-}
+        </div>
 
-.section-label {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.section-label::before {
-  content: '';
-  width: 20px;
-  height: 1px;
-  background: var(--accent);
-}
+      </div>
+            {/* SKILLS */}
 
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  background: transparent;
-  color: var(--ink);
-  border-radius: 100px;
-  font-size: 13px;
-  font-weight: 500;
-  border: 1px solid var(--border);
-  transition: background 0.2s, border-color 0.2s;
-  white-space: nowrap;
-  text-decoration: none;
-}
-.btn-secondary:hover {
-  background: var(--surface-2);
-  border-color: #c5c3bb;
-  color: var(--ink);
-}
+      <div className="about-block reveal" ref={skillRef}>
 
-/* grid */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
+        <p className="section-label">Skills</p>
 
-/* card */
-.project-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-  position: relative;
-  overflow: hidden;
-}
+        <div className="skills-section">
 
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  opacity: 0;
-  transition: opacity 0.25s;
-}
+          {skillGroups.map((group) => (
 
-.project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-  border-color: #d0cfc8;
-}
-.project-card:hover::before { opacity: 1; }
-
-.project-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: var(--surface-3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-}
+            <div key={group.label} className="skill-group">
 
-.project-title {
-  font-family: var(--serif);
-  font-size: 19px;
-  color: var(--ink);
-  letter-spacing: -0.3px;
-  font-weight: 400;
-}
+              <div className="skill-group-label">
+                {group.label}
+              </div>
 
-.project-desc {
-  font-size: 14px;
-  color: var(--ink-muted);
-  line-height: 1.7;
-  flex: 1;
-}
+              <div className="skill-tags">
 
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
+                {group.items.map((skill) => (
 
-.project-tag {
-  font-size: 11px;
-  font-weight: 500;
-  padding: 3px 10px;
-  border-radius: 100px;
-  background: var(--accent-light);
-  color: var(--accent);
-}
+                  <span key={skill} className="skill-tag">
+                    {skill}
+                  </span>
 
-.project-links {
-  display: flex;
-  gap: 10px;
-  padding-top: 14px;
-  border-top: 1px solid var(--border);
-}
+                ))}
 
-.link-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 500;
-  padding: 7px 14px;
-  border-radius: 100px;
-  text-decoration: none;
-  transition: background 0.2s, opacity 0.2s;
-}
+              </div>
 
-.link-btn-gh {
-  background: var(--surface-2);
-  color: var(--ink);
-  border: 1px solid var(--border);
-}
-.link-btn-gh:hover { background: var(--surface-3); color: var(--ink); }
-
-.link-btn-live {
-  background: var(--ink);
-  color: #fff;
-}
-.link-btn-live:hover { opacity: 0.82; color: #fff; }
-
-/* publication */
-.pub-section {
-  max-width: 1100px;
-  margin: 0 auto;
-}
+            </div>
 
-.pub-card {
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
+          ))}
 
-.pub-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
-  flex-wrap: wrap;
-}
+        </div>
 
-.pub-title {
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--ink);
-  line-height: 1.5;
-  flex: 1;
-}
+      </div>
 
-.pub-date {
-  font-size: 12px;
-  color: var(--ink-light);
-  padding: 4px 12px;
-  border-radius: 100px;
-  background: var(--surface-3);
-  border: 1px solid var(--border);
-  white-space: nowrap;
-}
+      {/* CERTIFICATIONS & LANGUAGES */}
 
-.pub-bullets {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+      <div className="about-bottom reveal" ref={certRef}>
 
-.pub-bullets li {
-  font-size: 14px;
-  color: var(--ink-muted);
-  line-height: 1.6;
-  padding-left: 16px;
-  position: relative;
-}
+        <div className="about-block-half">
 
-.pub-bullets li::before {
-  content: '–';
-  position: absolute;
-  left: 0;
-  color: var(--ink-light);
-}
+          <p className="section-label">Certifications</p>
 
-.pub-footer {
-  padding-top: 4px;
-}
+          <ul className="cert-list">
 
-/* reveal */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+            {certifications.map((cert) => (
 
-@media (max-width: 768px) {
-  .projects-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-}
-.contact {
-  padding: 100px 5vw;
-  background: #0f1117;
-  color: #fff;
-}
+              <li key={cert} className="cert-item">
 
-.contact-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5vw;
-  align-items: start;
-  max-width: 1100px;
-  margin: 0 auto;
-}
+                <span className="cert-dot"></span>
 
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+                {cert}
 
-.section-label-dark {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #60a5fa;
-  margin-bottom: 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.section-label-dark::before {
-  content: '';
-  width: 20px;
-  height: 1px;
-  background: #60a5fa;
-}
+              </li>
 
-.contact h2 {
-  font-family: var(--serif);
-  font-size: clamp(28px, 3.5vw, 42px);
-  letter-spacing: -1px;
-  line-height: 1.1;
-  color: #fff;
-  margin-bottom: 1rem;
-}
+            ))}
 
-.contact-text p {
-  font-size: 15px;
-  color: #9ca3af;
-  line-height: 1.8;
-  margin-bottom: 2rem;
-}
+          </ul>
 
-.contact-links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+        </div>
 
-.contact-link {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 18px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.09);
-  border-radius: var(--radius);
-  color: #fff;
-  font-size: 14px;
-  text-decoration: none;
-  transition: background 0.2s, border-color 0.2s;
-}
-.contact-link:hover {
-  background: rgba(255,255,255,0.09);
-  border-color: rgba(255,255,255,0.18);
-  color: #fff;
-}
+        <div className="about-block-half">
 
-.contact-link-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  flex-shrink: 0;
-  color: #fff;
-}
+          <p className="section-label">Languages</p>
 
-.contact-link-sublabel {
-  font-size: 11px;
-  color: #6b7280;
-  margin-top: 2px;
-}
+          <div className="lang-grid">
 
-/* Form */
-.contact-form-side {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+            {languages.map((language) => (
 
-.contact-form-side form {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+              <div key={language.lang} className="lang-card">
 
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
+                <div className="lang-name">
+                  {language.lang}
+                </div>
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+                <div className="lang-level">
+                  {language.level}
+                </div>
 
-.form-group label {
-  font-size: 12px;
-  color: #9ca3af;
-  letter-spacing: 0.04em;
-}
+              </div>
 
-.form-group input,
-.form-group textarea {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 8px;
-  padding: 11px 14px;
-  font-size: 14px;
-  color: #fff;
-  transition: border-color 0.2s;
-  resize: none;
-}
-.form-group input::placeholder,
-.form-group textarea::placeholder { color: #4b5563; }
-.form-group input:focus,
-.form-group textarea:focus { border-color: rgba(96,165,250,0.5); }
-
-.btn-send {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 26px;
-  background: #fff;
-  color: #0f1117;
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 500;
-  transition: opacity 0.2s;
-  cursor: pointer;
-  border: none;
-  font-family: var(--sans);
-}
-.btn-send:hover { opacity: 0.88; }
-
-.form-success {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 32px;
-  background: rgba(14,159,110,0.1);
-  border: 1px solid rgba(14,159,110,0.3);
-  border-radius: var(--radius);
-}
+            ))}
 
-.form-success-icon {
-  width: 40px;
-  height: 40px;
-  background: rgba(14,159,110,0.2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  color: #34d399;
-}
+          </div>
 
-.form-success h3 {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 400;
-  color: #fff;
-}
+        </div>
 
-.form-success p {
-  font-size: 14px;
-  color: #9ca3af;
-  margin: 0;
-}
+      </div>
 
-@media (max-width: 768px) {
-  .contact-layout { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
+    </section>
+  );
 }
-.footer {
-  background: #0f1117;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 22px 5vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-  color: #4b5563;
-}
 
-@media (max-width: 500px) {
-  .footer { flex-direction: column; gap: 6px; text-align: center; }
-}
+export default About;
