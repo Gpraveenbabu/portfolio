@@ -24,7 +24,7 @@ function Home() {
         <div className="social-links">
 
   <a
-    href="mailto:yourmail@gmail.com"
+    href="mailto:p.geddada@stud.uni-goettingen.de"
     target="_blank"
     rel="noreferrer"
     aria-label="Email"
@@ -33,7 +33,7 @@ function Home() {
   </a>
 
   <a
-    href="https://www.linkedin.com/in/YOUR-LINKEDIN"
+    href="https://www.linkedin.com/in/praveen-babu-4a3058258/"
     target="_blank"
     rel="noreferrer"
     aria-label="LinkedIn"
@@ -42,7 +42,7 @@ function Home() {
   </a>
 
   <a
-    href="https://leetcode.com/u/YOUR-LEETCODE/"
+    href="https://leetcode.com/u/gpraveenbabu7/"
     target="_blank"
     rel="noreferrer"
     aria-label="LeetCode"
@@ -51,7 +51,7 @@ function Home() {
   </a>
 
   <a
-    href="https://github.com/YOUR-GITHUB"
+    href="https://github.com/Gpraveenbabu"
     target="_blank"
     rel="noreferrer"
     aria-label="GitHub"
@@ -74,11 +74,11 @@ function Home() {
             Get in touch
           </a>
         </div>
-        <div className="stat">
+        <div className="hero-stats">
+          <div className="stat">
             <span className="stat-num">10+</span>
             <span className="stat-label">Projects shipped</span>
           </div>
-        <div className="hero-stats">
           <div className="stat">
             <span className="stat-num">1</span>
             <span className="stat-label">Publication (2025)</span>
@@ -88,7 +88,7 @@ function Home() {
             <span className="stat-label">Bachelor's GPA / 10</span>
           </div>
           <div className="stat">
-            <span className="stat-num">4+</span>
+            <span className="stat-num">10+</span>
             <span className="stat-label">Certifications</span>
           </div>
         </div>
