@@ -33,7 +33,7 @@ function Home() {
   </a>
 
   <a
-    href="https://www.linkedin.com/in/praveen-babu-4a3058258/"
+    href="https://www.linkedin.com/in/praveen-babu-geddada-4a3058258/"
     target="_blank"
     rel="noreferrer"
     aria-label="LinkedIn"
