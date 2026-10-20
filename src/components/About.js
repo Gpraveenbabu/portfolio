@@ -133,7 +133,7 @@ function About() {
 
               <div className="experience-header">
                 <div>
-                  <h3>Full Stack, AI/ML & Cyber Security Intern</h3>
+                  <h3>Artificial Intelligence Engineering Intern</h3>
                   <h4>AIMER Society</h4>
                 </div>
 
